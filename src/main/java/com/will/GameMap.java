@@ -18,4 +18,20 @@ public class GameMap {
         X = x;
         Y = y;
     }
+
+    public void placeEntity(Coordinate coordinate, Entity randomEntity) {
+        map.put(coordinate, randomEntity);
+    }
+
+    public Entity getEntityByCoordinate(Coordinate coordinate) {
+        return map.get(coordinate);
+    }
+
+    public boolean isEmpty(Coordinate coordinate) {
+        return !map.containsKey(coordinate);
+    }
+
+    public int getQuantityOfEntities() {
+        return map.size();
+    }
 }
