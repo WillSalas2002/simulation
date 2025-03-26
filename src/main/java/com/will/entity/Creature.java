@@ -28,5 +28,5 @@ public abstract class Creature extends Entity {
         this.velocity = velocity;
     }
 
-    protected abstract void makeMove(Coordinate coordinate);
+    public abstract void makeMove(Coordinate coordinate);
 }

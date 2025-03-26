@@ -26,7 +26,7 @@ public class Predator extends Creature {
     }
 
     @Override
-    protected void makeMove(Coordinate coordinate) {
+    public void makeMove(Coordinate coordinate) {
         if (isTargetNear) {
             System.out.println("Eat Herbivore at coordinate " + coordinate);
         } else {

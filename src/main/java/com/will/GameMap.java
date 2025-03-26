@@ -5,6 +5,7 @@ import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class GameMap {
 
@@ -12,7 +13,7 @@ public class GameMap {
     private final int X;
     @Getter
     private final int Y;
-    private Map<Coordinate, Entity> map = new HashMap<>();
+    private final Map<Coordinate, Entity> map = new HashMap<>();
 
     public GameMap(int x, int y) {
         X = x;
@@ -33,5 +34,9 @@ public class GameMap {
 
     public int getQuantityOfEntities() {
         return map.size();
+    }
+
+    public Set<Coordinate> findAllCoordinates() {
+        return map.keySet();
     }
 }
