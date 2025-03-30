@@ -10,5 +10,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public abstract class Entity {
 
-    private Coordinate coordinate;
+    protected Coordinate coordinate;
+    private String sign;
+
+    public Entity(Coordinate coordinate) {
+        this.coordinate = coordinate;
+    }
+
+    public abstract String getClassName();
 }

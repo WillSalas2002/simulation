@@ -22,19 +22,13 @@ public class MapRenderer {
             }
             System.out.println();
         }
+        System.out.println("=========================================================");
     }
 
     private static String defineSymbol(Entity entity) {
         if (entity == null) {
             return "⬛";
         }
-        return switch (entity.getClass().getSimpleName()) {
-            case ("Rock") -> "\uD83D\uDC8E";
-            case ("Tree") -> "\uD83C\uDF33";
-            case ("Grass") -> "\uD83C\uDF40";
-            case ("Herbivore") -> "\uD83D\uDC30";
-            case ("Predator") -> "\uD83E\uDD81";
-            default -> "⬛";
-        };
+        return entity.getSign();
     }
 }

@@ -14,19 +14,17 @@ public class InitAction implements Action {
     private static final Random RANDOM = new Random();
     private static final int PERCENTAGE_RATE = 100;
 
-    private final int xLength;
-    private final int yLength;
+    private final GameMap gameMap;
     private final int initialCapacity;
 
-    public InitAction(int xLength, int yLength, int initialCapacity) {
+    public InitAction(GameMap gameMap, int initialCapacity) {
+        this.gameMap = gameMap;
         this.initialCapacity = initialCapacity;
-        this.xLength = xLength;
-        this.yLength = yLength;
     }
 
     @Override
-    public void doWork(GameMap gameMap) {
-        int quantityOfEntitiesToBeSpawn = (xLength * yLength) * initialCapacity / PERCENTAGE_RATE;
+    public void doWork() {
+        int quantityOfEntitiesToBeSpawn = (gameMap.getX() * gameMap.getY()) * initialCapacity / PERCENTAGE_RATE;
 
         for (int i = 0; i < quantityOfEntitiesToBeSpawn; i++) {
             Entity randomEntity = getRandomEntity();
@@ -38,12 +36,12 @@ public class InitAction implements Action {
     }
 
     private Coordinate getRandomEmptyCellInMap(GameMap gameMap) {
-        int randomX = RANDOM.nextInt(xLength);
-        int randomY = RANDOM.nextInt(yLength);
+        int randomX = RANDOM.nextInt(gameMap.getX());
+        int randomY = RANDOM.nextInt(gameMap.getY());
 
         Coordinate coordinate = new Coordinate(randomX, randomY);
         while (!gameMap.isEmpty(coordinate)) {
-            coordinate = new Coordinate(RANDOM.nextInt(xLength), RANDOM.nextInt(yLength));
+            coordinate = new Coordinate(RANDOM.nextInt(gameMap.getX()), RANDOM.nextInt(gameMap.getY()));
         }
         return coordinate;
     }

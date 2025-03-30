@@ -1,6 +1,8 @@
 package com.will.entity;
 
 import com.will.Coordinate;
+import com.will.GameMap;
+import com.will.search.PathFinder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,11 +18,8 @@ public abstract class Creature extends Entity {
 
     protected int hp = 100;
     protected int velocity = 1;
-    protected boolean isTargetNear;
-
-    public Creature(Coordinate coordinate) {
-        super(coordinate);
-    }
+    protected String target;
+    protected PathFinder pathFinder;
 
     public Creature(Coordinate coordinate, int hp, int velocity) {
         super(coordinate);
@@ -28,5 +27,5 @@ public abstract class Creature extends Entity {
         this.velocity = velocity;
     }
 
-    public abstract void makeMove(Coordinate coordinate);
+    public abstract void makeMove(GameMap gameMap, PathFinder pathFinder);
 }

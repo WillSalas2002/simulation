@@ -4,8 +4,8 @@ import com.will.entity.Entity;
 import lombok.Getter;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class GameMap {
 
@@ -20,8 +20,18 @@ public class GameMap {
         Y = y;
     }
 
-    public void placeEntity(Coordinate coordinate, Entity randomEntity) {
-        map.put(coordinate, randomEntity);
+    public void placeEntity(Coordinate coordinate, Entity entity) {
+        map.put(coordinate, entity);
+    }
+
+    public void removeEntity(Coordinate coordinate) {
+        map.remove(coordinate);
+    }
+
+    public void moveEntity(Entity entity, Coordinate coordinate) {
+        map.remove(entity.getCoordinate());
+        entity.setCoordinate(coordinate);
+        map.put(coordinate, entity);
     }
 
     public Entity getEntityByCoordinate(Coordinate coordinate) {
@@ -36,7 +46,11 @@ public class GameMap {
         return map.size();
     }
 
-    public Set<Coordinate> findAllCoordinates() {
-        return map.keySet();
+    public List<Coordinate> findAllCoordinates() {
+        return map.keySet().stream().toList();
+    }
+
+    public <T> List<Entity> getByType(Class<T> type) {
+        return map.values().stream().filter(entity -> entity.getClass() == type).toList();
     }
 }

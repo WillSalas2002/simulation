@@ -1,6 +1,5 @@
 package com.will.entity;
 
-import com.will.Coordinate;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +13,10 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 public class Rock extends Entity {
 
-    public Rock(Coordinate coordinate) {
-        super(coordinate);
+    private String sign = "\uD83D\uDC8E";
+
+    @Override
+    public String getClassName() {
+        return Rock.class.getSimpleName();
     }
 }

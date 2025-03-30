@@ -1,6 +1,5 @@
 package com.will.entity;
 
-import com.will.Coordinate;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,8 +14,10 @@ import lombok.ToString;
 public class Grass extends Entity {
 
     private int remainingBites = 3;
+    private String sign = "\uD83C\uDF40";
 
-    public Grass(Coordinate coordinate) {
-        super(coordinate);
+    @Override
+    public String getClassName() {
+        return Grass.class.getSimpleName();
     }
 }
